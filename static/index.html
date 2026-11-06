@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f3ed">
+  <title>TrustVault | Document workspace</title>
+  <link rel="stylesheet" href="/static/styles.css?v=8">
+  <script src="/static/app.js?v=8" defer></script>
+</head>
+<body>
+  <section class="auth-shell" id="auth-screen">
+    <div class="auth-panel">
+      <a class="wordmark auth-brand" href="/app" aria-label="TrustVault home"><span class="brand-mark">T</span> TrustVault</a>
+      <div class="auth-form-wrap">
+        <p class="eyebrow" id="auth-eyebrow">SECURE ACCESS</p>
+        <h2 id="auth-title">Sign in</h2>
+        <p class="form-intro" id="auth-intro">Access your private document workspace.</p>
+        <form id="auth-form">
+          <label class="field" id="name-field" hidden>
+            <span>Full name</span>
+            <input id="full-name" name="full_name" autocomplete="name" maxlength="100">
+          </label>
+          <label class="field">
+            <span>Email address</span>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </label>
+          <label class="field">
+            <span>Password</span>
+            <input id="password" name="password" type="password" autocomplete="current-password" minlength="8" required>
+          </label>
+          <p class="form-error" id="auth-error" role="alert" hidden></p>
+          <button class="button button-primary button-wide" id="auth-submit" type="submit">Sign in <span aria-hidden="true">↗</span></button>
+        </form>
+      </div>
+      <p class="auth-foot">Your files stay yours. Access is always role-checked.</p>
+    </div>
+    <div class="auth-story">
+      <div class="auth-orb auth-orb-one" aria-hidden="true"></div>
+      <div class="auth-orb auth-orb-two" aria-hidden="true"></div>
+      <div class="auth-orb auth-orb-three" aria-hidden="true"></div>
+      <div class="auth-story-content">
+        <p class="eyebrow">PRIVATE DOCUMENT WORKSPACE</p>
+        <h1 id="welcome-title">Welcome Back!</h1>
+        <p class="story-note" id="welcome-intro">Enter your personal details to access your secure workspace.</p>
+        <div class="auth-switch-row">
+          <span id="switch-label">New to TrustVault?</span>
+          <button class="auth-switch" id="auth-switch" type="button">Create account</button>
+        </div>
+      </div>
+      <div class="story-bottom"><span>TRUSTVAULT</span><span>PRIVATE BY DESIGN</span></div>
+    </div>
+  </section>
+
+  <div class="app-shell" id="app-screen" hidden>
+    <aside class="sidebar">
+      <a class="wordmark sidebar-brand" href="/app"><span class="brand-mark">T</span> TrustVault</a>
+      <div class="side-label">WORKSPACE</div>
+      <nav class="side-nav" aria-label="Main navigation">
+        <button class="nav-link" data-view="overview" id="overview-nav" type="button" hidden><span class="nav-glyph">▦</span> Dashboard</button>
+        <button class="nav-link is-active" data-view="documents" type="button"><span class="nav-glyph">▤</span> Documents <span class="nav-count" id="nav-doc-count">0</span></button>
+        <button class="nav-link" data-view="users" id="users-nav" type="button" hidden><span class="nav-glyph">◎</span> User Management</button>
+        <button class="nav-link" data-view="audit" id="audit-nav" type="button" hidden><span class="nav-glyph">◷</span> Audit Logs</button>
+        <button class="nav-link" data-view="profile" type="button"><span class="nav-glyph">◉</span> Profile</button>
+      </nav>
+      <div class="sidebar-spacer"></div>
+      <div class="side-note"><span class="note-mark">+</span><span><b>Private by default</b><small>Access follows your role.</small></span></div>
+      <div class="account-row">
+        <span class="avatar" id="user-avatar">TV</span>
+        <span class="account-name"><b id="user-name">Account</b><small id="user-role">Member</small></span>
+        <button class="icon-button" id="logout-button" type="button" title="Logout" aria-label="Logout">↗</button>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div class="crumb"><span>VAULT</span><b>/</b><strong id="topbar-title">Documents</strong></div>
+        <div class="top-actions">
+          <label class="search-box"><span aria-hidden="true">⌕</span><input id="search-name" type="search" placeholder="Find a document" aria-label="Search document names"><kbd>/</kbd></label>
+          <button class="button button-primary upload-top" id="upload-open" type="button"><span aria-hidden="true">＋</span> Add document</button>
+        </div>
+      </header>
+
+      <section class="view admin-overview-view" id="admin-overview-view" hidden>
+        <div class="page-heading">
+          <div><p class="eyebrow">ADMINISTRATION</p><h1>Overview<span class="heading-period">.</span></h1><p class="heading-note">A live view of TrustVault accounts and recent activity.</p></div>
+          <button class="button button-outline" id="refresh-admin-overview" type="button" title="Refresh admin overview"><span aria-hidden="true">↻</span> Refresh</button>
+        </div>
+        <div class="overview-stats" aria-label="User account statistics">
+          <article class="overview-stat"><span class="stat-label">TOTAL USERS</span><strong id="overview-total-users">—</strong><small>registered accounts</small></article>
+          <article class="overview-stat"><span class="stat-label">ACTIVE USERS</span><strong id="overview-active-users">—</strong><small>accounts enabled</small></article>
+          <article class="overview-stat"><span class="stat-label">INACTIVE USERS</span><strong id="overview-inactive-users">—</strong><small>accounts disabled</small></article>
+          <article class="overview-stat"><span class="stat-label">OWNERS</span><strong id="overview-owners">—</strong><small>document owners</small></article>
+          <article class="overview-stat"><span class="stat-label">VIEWERS</span><strong id="overview-viewers">—</strong><small>viewer accounts</small></article>
+          <article class="overview-stat"><span class="stat-label">ADMINS</span><strong id="overview-admins">—</strong><small>administrator accounts</small></article>
+        </div>
+        <div class="overview-content">
+          <section class="overview-activity">
+            <div class="overview-section-heading"><div><p class="eyebrow">LATEST EVENTS</p><h2>Recent audit activity</h2></div><button class="text-link" id="overview-audit-shortcut" type="button" data-view="audit">View all logs <span aria-hidden="true">↗</span></button></div>
+            <div class="overview-table-wrap">
+              <table class="overview-table">
+                <thead><tr><th>ACTION</th><th>USER</th><th>DOCUMENT</th><th>TIME</th></tr></thead>
+                <tbody id="overview-audit-rows"></tbody>
+              </table>
+              <div class="empty-state" id="overview-audit-empty" hidden><span class="empty-symbol">◷</span><h3>No activity yet</h3><p>Audit activity will appear here as TrustVault is used.</p></div>
+              <div class="loading-state" id="admin-overview-loading" hidden><span class="loader"></span> Loading admin overview</div>
+              <div class="error-state" id="admin-overview-error" role="alert" hidden></div>
+            </div>
+          </section>
+          <aside class="overview-shortcuts">
+            <p class="eyebrow">ADMIN TOOLS</p><h2>Manage TrustVault</h2>
+            <p>Review accounts or inspect the complete audit trail.</p>
+            <button class="overview-shortcut" id="overview-users-shortcut" type="button" data-view="users"><span class="shortcut-icon">◎</span><span><b>User Management</b><small>Review roles and account status</small></span><span aria-hidden="true">↗</span></button>
+            <button class="overview-shortcut" type="button" data-view="audit"><span class="shortcut-icon">◷</span><span><b>Audit Logs</b><small>View recorded vault activity</small></span><span aria-hidden="true">↗</span></button>
+          </aside>
+        </div>
+        <footer class="page-foot"><span>TRUSTVAULT ADMIN OVERVIEW</span><span>ACCOUNT COUNTS FROM LIVE DATABASE RECORDS</span></footer>
+      </section>
+
+      <section class="view" id="documents-view">
+        <div class="page-heading">
+          <div><p class="eyebrow">YOUR PRIVATE LIBRARY</p><h1>Documents<span class="heading-period">.</span></h1><p class="heading-note">Everything you own or have permission to access.</p></div>
+          <button class="button button-outline" id="refresh-documents" type="button" title="Refresh documents"><span aria-hidden="true">↻</span> Refresh</button>
+        </div>
+        <div class="stats-row">
+          <div class="stat-block"><span class="stat-label">AVAILABLE FILES</span><strong id="stat-total">0</strong><small>in your workspace</small></div>
+          <div class="stat-block"><span class="stat-label">YOUR FILES</span><strong id="stat-owned">0</strong><small>owned by you</small></div>
+          <div class="stat-block"><span class="stat-label">CATEGORIES</span><strong id="stat-categories">0</strong><small>represented here</small></div>
+          <div class="stat-aside"><span class="live-dot"></span><span>All access is recorded</span></div>
+        </div>
+        <div class="list-toolbar">
+          <div><h2>All documents <span class="result-count" id="result-count">0</span></h2><p>Search by name or narrow by category.</p></div>
+            <div class="filters">
+              <label class="category-filter"><span>Category</span><input id="search-category" type="search" placeholder="All categories" aria-label="Filter by category"></label>
+              <label class="category-filter"><span>Owner</span><input id="search-owner" type="search" placeholder="Name or email" aria-label="Filter by owner"></label>
+              <label class="category-filter date-filter"><span>From</span><input id="search-date-from" type="date" aria-label="Filter from date"></label>
+              <label class="category-filter date-filter"><span>To</span><input id="search-date-to" type="date" aria-label="Filter to date"></label>
+            </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>DOCUMENT</th><th>CATEGORY</th><th>OWNER</th><th>ADDED</th><th><span class="sr-only">Actions</span></th></tr></thead>
+            <tbody id="document-rows"></tbody>
+          </table>
+          <div class="empty-state" id="documents-empty" hidden><span class="empty-symbol">⌕</span><h3>No documents found</h3><p>Try a different search, or add a document to your vault.</p><button class="button button-outline" id="empty-upload" type="button">Add a document</button></div>
+          <div class="loading-state" id="documents-loading" hidden><span class="loader"></span> Loading your documents</div>
+        </div>
+        <footer class="page-foot"><span>TRUSTVAULT WORKSPACE</span><span id="last-updated">Ready</span></footer>
+      </section>
+
+      <section class="view audit-view" id="audit-view" hidden>
+        <div class="page-heading">
+          <div><p class="eyebrow">ADMINISTRATION</p><h1>Audit trail<span class="heading-period">.</span></h1><p class="heading-note">A record of activity across your document vault.</p></div>
+          <button class="button button-outline" id="refresh-audit" type="button"><span aria-hidden="true">↻</span> Refresh</button>
+        </div>
+        <div class="audit-summary"><span class="stat-label">RECORDED EVENTS</span><strong id="audit-total">0</strong><span>Most recent activity first</span></div>
+        <div class="table-wrap">
+        <table class="audit-table"><thead><tr><th>ACTION</th><th>USER</th><th>DOCUMENT ID</th><th>RESULT</th><th>TIMESTAMP</th></tr></thead><tbody id="audit-rows"></tbody></table>
+          <div class="empty-state" id="audit-empty" hidden><span class="empty-symbol">◷</span><h3>No activity yet</h3><p>Events will appear here as the vault is used.</p></div>
+          <div class="loading-state" id="audit-loading" hidden><span class="loader"></span> Loading audit trail</div>
+        <div class="error-state" id="audit-error" role="alert" hidden></div>
+        </div>
+        <footer class="page-foot"><span>ADMINISTRATOR VIEW</span><span>ACCESS CONTROLLED</span></footer>
+      </section>
+
+      <section class="view audit-view" id="users-view" hidden>
+        <div class="page-heading">
+          <div><p class="eyebrow">ADMINISTRATION</p><h1>User access<span class="heading-period">.</span></h1><p class="heading-note">Deactivate a user's account to stop existing sessions immediately.</p></div>
+          <button class="button button-outline" id="refresh-users" type="button"><span aria-hidden="true">↻</span> Refresh</button>
+        </div>
+        <div class="table-wrap">
+          <table><thead><tr><th>USER ID</th><th>FULL NAME / EMAIL</th><th>ROLE</th><th>STATUS</th><th>CREATED DATE</th><th><span class="sr-only">Actions</span></th></tr></thead><tbody id="user-rows"></tbody></table>
+          <div class="empty-state" id="users-empty" hidden><h3>No accounts found</h3></div>
+          <div class="loading-state" id="users-loading" hidden><span class="loader"></span> Loading accounts</div>
+          <div class="error-state" id="users-error" role="alert" hidden></div>
+        </div>
+        <footer class="page-foot"><span>ADMINISTRATOR VIEW</span><span>STATUS CHANGES ARE AUDITED</span></footer>
+      </section>
+
+      <section class="view profile-view" id="profile-view" hidden>
+        <div class="page-heading">
+          <div><p class="eyebrow">YOUR ACCOUNT</p><h1>Profile<span class="heading-period">.</span></h1><p class="heading-note">Your TrustVault account details and access status.</p></div>
+        </div>
+        <div class="profile-card">
+          <span class="profile-avatar" id="profile-avatar">TV</span>
+          <dl class="profile-details">
+            <div><dt>User ID</dt><dd id="profile-id">—</dd></div>
+            <div><dt>Full name</dt><dd id="profile-name">—</dd></div>
+            <div><dt>Email</dt><dd id="profile-email">—</dd></div>
+            <div><dt>Role</dt><dd id="profile-role">—</dd></div>
+            <div><dt>Account status</dt><dd id="profile-status">—</dd></div>
+          </dl>
+        </div>
+        <footer class="page-foot"><span>TRUSTVAULT ACCOUNT</span><span>ACCESS CONTROLLED</span></footer>
+      </section>
+    </main>
+  </div>
+
+  <div class="dialog-backdrop" id="dialog-backdrop" hidden>
+    <section class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title">
+      <div class="dialog-head"><div><p class="eyebrow" id="dialog-eyebrow">DOCUMENT</p><h2 id="dialog-title">Add document</h2></div><button class="icon-button dialog-close" id="dialog-close" type="button" aria-label="Close dialog">×</button></div>
+      <div id="dialog-content"></div>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
