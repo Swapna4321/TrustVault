@@ -36,6 +36,13 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
+
+def get_signing_key():
+    if not SECRET_KEY:
+        raise RuntimeError("SECRET_KEY must be configured.")
+    return SECRET_KEY
+
+
 password_hash = PasswordHash.recommended()
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
@@ -60,35 +67,40 @@ ALLOWED_EXTENSIONS = {
 # DATABASE CONNECTION
 # ==========================================
 
+
+# ==========================================
+# DATABASE CONNECTION
+# ==========================================
+
 def get_connection():
     settings = {
         "host": os.getenv("DB_HOST"),
         "dbname": os.getenv("DB_NAME"),
         "user": os.getenv("DB_USER"),
         "password": os.getenv("DB_PASSWORD"),
-        "port": os.getenv("DB_PORT")
+        "port": os.getenv("DB_PORT"),
+        "sslmode": "require"
     }
-    missing = [key for key, value in settings.items() if not value]
+
+    missing = [
+        key for key, value in settings.items()
+        if not value
+    ]
+
     if missing:
         raise RuntimeError(
             f"Missing database configuration: {', '.join(missing)}"
         )
 
     settings["port"] = int(settings["port"])
-    return psycopg.connect(
-        **settings
-    )
 
-
-def get_signing_key():
-    if not SECRET_KEY or len(SECRET_KEY) < 32:
-        raise RuntimeError("SECRET_KEY must contain at least 32 characters")
-    return SECRET_KEY
+    return psycopg.connect(**settings)
 
 
 # ==========================================
 # REQUEST MODEL
 # ==========================================
+
 
 class RegisterRequest(BaseModel):
     full_name: str
