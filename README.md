@@ -155,10 +155,17 @@ No hosting provider, public deployment URL, container manifest, or service-manag
 7. Before public exposure, address the limitations in [THREATS.md](THREATS.md), including rate limiting, MFA, content inspection, security headers, and independent audit-log anchoring.
 
 The database, `uploads/`, secret management, TLS, backups, monitoring, and operational processes must be secured by the deployer. This repository does not itself configure a production platform. 
+# TrustVault
 
-Live Demo
+### Live Demo
 
-Deployed Application: https://trustvault-bj8l.onrender.com
+**Live Application:** https://trustvault-bj8l.onrender.com/app
+
+**API Documentation (Swagger):** https://trustvault-bj8l.onrender.com/docs
+
+**Health Check:** https://trustvault-bj8l.onrender.com/health
+
+
 
 You can access the live TrustVault application using the link above.
 
