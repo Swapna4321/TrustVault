@@ -154,7 +154,13 @@ No hosting provider, public deployment URL, container manifest, or service-manag
 6. Configure a health check against `/health`, monitor application/database errors, and establish tested backup and restore procedures for both PostgreSQL and uploaded files.
 7. Before public exposure, address the limitations in [THREATS.md](THREATS.md), including rate limiting, MFA, content inspection, security headers, and independent audit-log anchoring.
 
-The database, `uploads/`, secret management, TLS, backups, monitoring, and operational processes must be secured by the deployer. This repository does not itself configure a production platform.
+The database, `uploads/`, secret management, TLS, backups, monitoring, and operational processes must be secured by the deployer. This repository does not itself configure a production platform. 
+
+Live Demo
+
+Deployed Application: https://trustvault-bj8l.onrender.com
+
+You can access the live TrustVault application using the link above.
 
 ## Current limitations
 
